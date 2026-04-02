@@ -1,0 +1,19 @@
+name: OYBuild
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Bootstrap program
+      run: ./build.sh
+    - name: Compile main executable
+      run: ./oybuild
