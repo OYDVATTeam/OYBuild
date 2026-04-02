@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Add executable permission
+      run: chmod +x build.sh
     - name: Bootstrap program
       run: ./build.sh
     - name: Compile main executable
