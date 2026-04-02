@@ -1,0 +1,10 @@
+sources = ["src/lexer.cpp", "src/parser.cpp", "src/executor.cpp", "src/main.cpp"]
+objs = ["lexer.o", "parser.o", "executor.o", "main.o"]
+
+for (file in sources) do
+    cxxcompile(file)
+endfor
+
+cxxlink("oybuild", objs)
+
+command("echo Successufully compiled OYBuild")
