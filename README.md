@@ -3,6 +3,7 @@ OYDVAT build system. \
 If you came from the OYDVAT from Linux page, you might want to compile this utility \
 It handles compiling programs
 # 1. Bootstrap program (you probably dont even have it right now)
+Make sure to run this first: ``` chmod +x build.sh ```
 ```
 $ ./build.sh
 ```
