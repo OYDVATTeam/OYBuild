@@ -9,6 +9,9 @@
 #include <sstream>
 #include <fstream>
 #include <unistd.h>
+#ifdef OYBUILD_COMPILING_WITH_BOOTSTRAPPED_OYBUILD
+    #include "commands/valacompile.hpp"
+#endif
 
 std::map<std::string, std::vector<std::string>> env;
 
@@ -156,6 +159,17 @@ void runStmt(Stmt* stmt) {
         else if (callee == "PkgConfig" && args.size() == 2) pkgConfig(args[0], args[1]);
         else if (callee == "subdirectory" && args.size() == 1) subdirectory(args[0]);
         else if (callee == "command" && args.size() == 1) runCommandOrFail(args[0]);
+#ifdef OYBUILD_COMPILING_WITH_BOOTSTRAPPED_OYBUILD
+        if (call->callee == "valacompile") {
+            std::string src = evalString(call->args[0]);
+            std::vector<std::string> flags;
+            if (call->args.size() > 1) {
+                flags = evalList(call->args[1]);
+            }
+            handle_valacompile(src, flags);
+            return; // Exit early since we handled the command
+        }
+#endif
     }
     else if (auto f = dynamic_cast<ForStmt*>(stmt)) {
         auto it = env.find(f->iterable);
