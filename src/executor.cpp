@@ -13,9 +13,6 @@
     #include "commands/valacompile.hpp"
 #endif
 
-std::string evalString(Expr* expr);
-std::vector<std::string> evalList(Expr* expr);
-
 std::map<std::string, std::vector<std::string>> env;
 
 void runCommandOrFail(const std::string& cmd) {
@@ -163,22 +160,10 @@ void runStmt(Stmt* stmt) {
         else if (callee == "subdirectory" && args.size() == 1) subdirectory(args[0]);
         else if (callee == "command" && args.size() == 1) runCommandOrFail(args[0]);
 #ifdef OYBUILD_COMPILING_WITH_BOOTSTRAPPED_OYBUILD
-        // Get the CallExpr from the CallStmt wrapper
-        CallExpr* ce = call->call; 
-    
-        if (ce->callee == "valacompile") {
-            // Since this isn't a class, call the functions directly.
-            // You may need to pass your symbolTable as an argument 
-            // if your evalString/evalList functions require it.
-            std::string src = evalString(ce->args[0]); 
-            std::vector<std::string> flags;
-            
-            if (ce->args.size() > 1) {
-                flags = evalList(ce->args[1]);
-            }
-            
-            handle_valacompile(src, flags);
-            return; 
+        else if (callee == "valacompile" && args.size() >= 1) {
+            // args[0] is the source file
+            // rest contains all other flags/packages
+            handle_valacompile(args[0], rest);
         }
 #endif
     }
