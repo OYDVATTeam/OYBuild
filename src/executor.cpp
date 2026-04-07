@@ -160,14 +160,20 @@ void runStmt(Stmt* stmt) {
         else if (callee == "subdirectory" && args.size() == 1) subdirectory(args[0]);
         else if (callee == "command" && args.size() == 1) runCommandOrFail(args[0]);
 #ifdef OYBUILD_COMPILING_WITH_BOOTSTRAPPED_OYBUILD
-        if (call->callee == "valacompile") {
-            std::string src = evalString(call->args[0]);
+        // 1. Get the underlying CallExpr from the CallStmt
+        CallExpr* ce = call->call; 
+    
+        if (ce->callee == "valacompile") {
+            // 2. Access ce->args and use member functions
+            std::string src = this->evalString(ce->args[0]);
             std::vector<std::string> flags;
-            if (call->args.size() > 1) {
-                flags = evalList(call->args[1]);
+        
+            if (ce->args.size() > 1) {
+            flags = this->evalList(ce->args[1]);
             }
+        
             handle_valacompile(src, flags);
-            return; // Exit early since we handled the command
+            return; 
         }
 #endif
     }
