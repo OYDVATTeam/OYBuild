@@ -13,6 +13,9 @@
     #include "commands/valacompile.hpp"
 #endif
 
+std::string evalString(Expr* expr);
+std::vector<std::string> evalList(Expr* expr);
+
 std::map<std::string, std::vector<std::string>> env;
 
 void runCommandOrFail(const std::string& cmd) {
