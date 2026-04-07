@@ -85,7 +85,7 @@ void link(const std::string& output, const std::vector<std::string>& args) {
 }
 
 void cxxlink(const std::string& output, const std::vector<std::string>& args) {
-    std::cout << "[cxxlink] Linking CXX executable " << output << std::endl;
+    std::cout << "[cxxlink] Linking C++ executable " << output << std::endl;
     std::string cmd = "g++ -o " + output;
     for (auto& a : args) cmd += " " + a;
     runCommandOrFail(cmd);
