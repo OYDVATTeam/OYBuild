@@ -1,5 +1,5 @@
-sources = ["src/lexer.cpp", "src/parser.cpp", "src/executor.cpp", "src/main.cpp"]
-objs = ["lexer.o", "parser.o", "executor.o", "main.o"]
+sources = ["src/lexer.cpp", "src/parser.cpp", "src/executor.cpp", "src/main.cpp", "src/commands/valacompile.cpp"]
+objs = ["lexer.o", "parser.o", "executor.o", "main.o", "valacompile.o"]
 
 FLAGS = ["-DOYBUILD_COMPILING_WITH_BOOTSTRAPPED_OYBUILD"]
 
