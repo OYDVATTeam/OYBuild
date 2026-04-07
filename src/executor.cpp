@@ -160,18 +160,20 @@ void runStmt(Stmt* stmt) {
         else if (callee == "subdirectory" && args.size() == 1) subdirectory(args[0]);
         else if (callee == "command" && args.size() == 1) runCommandOrFail(args[0]);
 #ifdef OYBUILD_COMPILING_WITH_BOOTSTRAPPED_OYBUILD
-        // 1. Get the underlying CallExpr from the CallStmt
+        // Get the CallExpr from the CallStmt wrapper
         CallExpr* ce = call->call; 
     
         if (ce->callee == "valacompile") {
-            // 2. Access ce->args and use member functions
-            std::string src = this->evalString(ce->args[0]);
+            // Since this isn't a class, call the functions directly.
+            // You may need to pass your symbolTable as an argument 
+            // if your evalString/evalList functions require it.
+            std::string src = evalString(ce->args[0]); 
             std::vector<std::string> flags;
-        
+            
             if (ce->args.size() > 1) {
-            flags = this->evalList(ce->args[1]);
+                flags = evalList(ce->args[1]);
             }
-        
+            
             handle_valacompile(src, flags);
             return; 
         }
