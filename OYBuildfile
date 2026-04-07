@@ -1,8 +1,10 @@
 sources = ["src/lexer.cpp", "src/parser.cpp", "src/executor.cpp", "src/main.cpp"]
 objs = ["lexer.o", "parser.o", "executor.o", "main.o"]
 
+FLAGS = ["-DOYBUILD_COMPILING_WITH_BOOTSTRAPPED_OYBUILD"]
+
 for (file in sources) do
-    cxxcompile(file)
+    cxxcompile(file, FLAGS)
 endfor
 
 cxxlink("oybuild", objs)
