@@ -42,5 +42,59 @@ for (file in SOURCES) do
     compile(file)
 endfor
 ```
+## 1.04: cxxcompile()
+Compiles a C++ file
+## 1.05: link()
+Usage:
+```
+link(output, [objs/flags])
+```
+Links a C executable \
+Example:
+```
+compile("main.c")
+link("a.out", "main.o")
+```
+## 1.06: cxxlink()
+Links a C++ executable
+## 1.07: static_lib(), cxxstatic_lib(), shared_lib() and cxxshared_lib()
+Creates a library
+## 1.08: PkgConfig()
+Usage: 
+```
+PkgConfig(var, package)
+```
+Runs pkg-config and saves flags to var.
+## 1.09: subdirectory()
+Usage:
+```
+subdirectory(path)
+```
+Enters a subdirectory and runs its OYBuildfile
+## 1.10: command()
+Runs a command
+## 1.11: valacompile()
+> [!WARNING]
+> This command is only available once OYBuild is rebuilt with \
+> the bootstrapped OYBuild. THE BOOTSTRAPPED OYBUILD DOES \
+> NOT HAVE THIS COMMAND.
 
-# Sorry, documentation isnt fully finished yet
+> [!TIP]
+> The bootstrapped OYBuild is the one compiled with build.sh \
+> The rebuilt OYBuild is the one compiled with bootstrapped one
+
+Compiles a Vala file \
+Usage:
+```
+valacompile(source_file, [flags])
+```
+
+# 2. Compiling flow
+```mermaid
+flowchart TD
+    A[OYBuild starts] --> B[Looking for OYBuildfile]
+    B --> C[Lexing OYBuildfile]
+    C --> D[Parsing OYBuildfile]
+    D --> E[Environment Initialization]
+    E --> F[Interating through the AST and executing commands]
+```
