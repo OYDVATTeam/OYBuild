@@ -1,1 +1,1 @@
-"Sorry, but the documentation isn't implemented (yet)"
+Documentation of OYBuild is in this folder
