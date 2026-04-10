@@ -1,0 +1,5 @@
+print("OYBuild Test Suite")
+print("FATAL ERROR:")
+print("The test suite isn't implemented yet!")
+print("Solutions:")
+print("1. Wait until the test suite is implemented!")
