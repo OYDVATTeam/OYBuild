@@ -5,7 +5,7 @@ set -eu
 CXX=${CXX:-g++}
 CXXFLAGS="-std=c++17 -Wall -Wextra -pedantic -O2"
 
-TARGET="oybuild"
+TARGET="oybuild_bootstrap"
 SOURCES="
 src/executor.cpp
 src/lexer.cpp
