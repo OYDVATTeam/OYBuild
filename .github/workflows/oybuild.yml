@@ -19,3 +19,5 @@ jobs:
       run: ./build.sh
     - name: Compile main executable
       run: ./oybuild_bootstrap
+    - name: Test OYBuild
+      run: cd testsuite && python3 test.py
