@@ -18,4 +18,4 @@ jobs:
     - name: Bootstrap program
       run: ./build.sh
     - name: Compile main executable
-      run: ./oybuild
+      run: ./oybuild_bootstrap
