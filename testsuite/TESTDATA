@@ -1,8 +1,0 @@
-# Test 1
-TESTID: 1
-NAME: "Test Empty OYBuildfile"
-TESTEXPECTS: PASS
-TESTOUTPUTEXPECTED: NONE
-TESTDIR: test_empty_oybuildfile
-
-# Not implemented full test data yet
