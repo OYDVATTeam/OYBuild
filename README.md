@@ -1,6 +1,7 @@
 # OYBuild
 OYDVAT build system. \
-It handles compiling programs
+It handles compiling programs \
+It can be used for everyone to make their own programs
 # 1. Bootstrap program (you probably dont even have it right now)
 Make sure to run this first: ``` chmod +x build.sh ```
 ```
