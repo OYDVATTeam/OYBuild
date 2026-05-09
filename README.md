@@ -10,5 +10,11 @@ $ ./build.sh
 ```
 $ ./oybuild_bootstrap
 ```
-# 3. Install it
+# 3. (Optional) Test OYBuild
+Enter testsuite directory and run:
+```
+$ python3 test.py
+```
+Note that this operation requires Python
+# 4. Install it
 ... by copying the oybuild executable to /usr/bin
