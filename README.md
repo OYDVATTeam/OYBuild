@@ -8,7 +8,7 @@ $ ./build.sh
 ```
 # 2. Compile the program
 ```
-$ ./oybuild
+$ ./oybuild_bootstrap
 ```
 # 3. Install it
 ... by copying the oybuild executable to /usr/bin
