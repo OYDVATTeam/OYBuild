@@ -8,7 +8,7 @@ try:
 except Exception as e:
     print("ERROR: test_empty_oybuildfile")
     print(e)
-    print("All tests failed. HINT: Please be in testsuite dir befor running test.py")
+    print("All tests failed. HINT: Please be in testsuite dir before running test.py")
     sys.exit(1)
 
 test1_result = os.system("../../oybuild")
